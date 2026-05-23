@@ -11,6 +11,7 @@
     :root {
       --cream: #f8f1e8;
       --soft-cream: #fffaf3;
+      --warm-white: #fffdf8;
       --sage: #596548;
       --deep-green: #253322;
       --clay: #bd735f;
@@ -18,19 +19,16 @@
       --dusty-pink: #d9a090;
       --warm-brown: #8a5f49;
       --charcoal: #2c2b25;
-      --muted: #6f6a5d;
-      --card: #fff8ef;
-      --border: rgba(89, 101, 72, 0.18);
-      --shadow: 0 18px 45px rgba(73, 55, 37, 0.13);
-      --radius-xl: 34px;
-      --radius-lg: 24px;
-      --radius-md: 16px;
+      --muted: #766f66;
+      --shadow: 0 22px 60px rgba(69, 54, 40, 0.13);
+      --soft-shadow: 0 12px 35px rgba(69, 54, 40, 0.10);
+      --radius: 34px;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -40,886 +38,947 @@
     body {
       font-family: "DM Sans", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(241, 216, 205, 0.55), transparent 28%),
-        radial-gradient(circle at top right, rgba(207, 184, 145, 0.22), transparent 30%),
+        radial-gradient(circle at top left, rgba(241, 216, 205, 0.65), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(89, 101, 72, 0.18), transparent 38%),
         var(--cream);
       color: var(--charcoal);
-      line-height: 1.6;
+      min-height: 100vh;
+      padding: 22px;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page {
-      width: min(1180px, calc(100% - 32px));
-      margin: 24px auto;
-      background: rgba(255, 250, 243, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.65);
-      border-radius: 36px;
-      box-shadow: var(--shadow);
+    .page-shell {
+      width: min(1480px, 100%);
+      margin: 0 auto;
+      background: rgba(255, 250, 243, 0.92);
+      border: 1px solid rgba(89, 101, 72, 0.08);
+      border-radius: var(--radius);
       overflow: hidden;
-      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
     }
 
-    .nav {
+    /* NAV */
+
+    header {
+      height: 112px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 26px 38px;
-      position: sticky;
-      top: 0;
-      background: rgba(255, 250, 243, 0.9);
-      backdrop-filter: blur(14px);
-      z-index: 50;
-      border-bottom: 1px solid rgba(89, 101, 72, 0.08);
+      justify-content: space-between;
+      padding: 0 48px;
+      border-bottom: 1px solid rgba(89, 101, 72, 0.09);
+      background: rgba(255, 253, 248, 0.78);
     }
 
     .logo {
       font-family: "Homemade Apple", cursive;
-      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      font-size: clamp(1.45rem, 2vw, 2.25rem);
       color: var(--deep-green);
-      line-height: 1;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       white-space: nowrap;
     }
 
     .logo span {
       color: var(--clay);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.1rem;
+      margin-top: -5px;
     }
 
-    .nav-links {
+    nav {
       display: flex;
       align-items: center;
-      gap: 28px;
-      font-size: 0.95rem;
-      font-weight: 600;
+      gap: 32px;
+      font-weight: 700;
+      font-size: 0.96rem;
     }
 
-    .nav-links a {
+    nav a {
       position: relative;
+      color: #211f1b;
     }
 
-    .nav-links a::after {
+    nav a::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: -7px;
-      width: 0;
+      width: 0%;
       height: 2px;
       background: var(--clay);
       transition: 0.25s ease;
     }
 
-    .nav-links a:hover::after {
+    nav a:hover::after {
       width: 100%;
     }
 
-    .nav-button {
+    .connect-btn {
       background: var(--sage);
       color: white;
-      padding: 12px 20px;
+      padding: 17px 28px;
       border-radius: 999px;
-      box-shadow: 0 10px 22px rgba(89, 101, 72, 0.2);
+      box-shadow: var(--soft-shadow);
+      transition: 0.25s ease;
     }
+
+    .connect-btn:hover {
+      transform: translateY(-2px);
+      background: var(--deep-green);
+    }
+
+    /* HERO */
 
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1.08fr;
-      gap: 40px;
-      align-items: center;
-      padding: 52px 54px 46px;
       position: relative;
+      min-height: calc(100vh - 156px);
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      align-items: center;
+      gap: 40px;
+      padding: 70px 58px 80px;
+      overflow: hidden;
     }
 
-    .leaf-left {
+    .hero::before {
+      content: "";
       position: absolute;
-      left: 0;
-      top: 120px;
-      width: 82px;
-      height: 300px;
-      opacity: 0.55;
-      background:
-        radial-gradient(ellipse at center, rgba(89, 101, 72, 0.32) 0 35%, transparent 36%),
-        transparent;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
-      filter: blur(0.1px);
+      background: rgba(89, 101, 72, 0.09);
+      left: -90px;
+      top: 250px;
+      filter: blur(2px);
     }
 
-    .eyebrow {
-      color: var(--warm-brown);
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      margin-bottom: 10px;
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(217, 160, 144, 0.18);
+      right: -150px;
+      bottom: -120px;
+      filter: blur(6px);
     }
 
-    .hero h1 {
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 580px;
+    }
+
+    .intro {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(4.2rem, 8vw, 7.8rem);
-      line-height: 0.88;
+      font-size: 1.85rem;
       color: var(--deep-green);
-      letter-spacing: -0.04em;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
     }
 
-    .script {
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--deep-green);
+      font-size: clamp(5rem, 8vw, 9.2rem);
+      line-height: 0.82;
+      letter-spacing: -4px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .script-line {
       font-family: "Homemade Apple", cursive;
       color: var(--clay);
-      font-size: clamp(1.15rem, 2.4vw, 1.75rem);
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-
-    .hero p {
-      max-width: 520px;
-      color: #3d3b34;
-      font-size: 1.05rem;
+      font-size: clamp(1.5rem, 2.3vw, 2.35rem);
+      line-height: 1.55;
       margin-bottom: 28px;
+      max-width: 520px;
     }
 
-    .buttons {
+    .hero-copy p {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: #34322d;
+      max-width: 550px;
+      margin-bottom: 30px;
+    }
+
+    .button-row {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
       gap: 14px;
-      align-items: center;
+      margin-top: 28px;
     }
 
     .btn {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 17px 27px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 1rem;
+      transition: 0.25s ease;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      border-radius: 999px;
-      padding: 14px 22px;
-      font-weight: 700;
-      font-size: 0.94rem;
-      border: 1px solid transparent;
-      transition: 0.25s ease;
+      justify-content: center;
+      gap: 8px;
+      min-width: 180px;
     }
 
     .btn-primary {
       background: var(--sage);
       color: white;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--deep-green);
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
-      background: rgba(255, 250, 243, 0.8);
+      background: rgba(255, 255, 255, 0.45);
       color: var(--clay);
-      border-color: rgba(189, 115, 95, 0.28);
+      border: 1px solid rgba(189, 115, 95, 0.22);
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      transform: translateY(-2px);
     }
 
     .btn-light {
-      background: white;
+      background: rgba(255, 255, 255, 0.68);
       color: var(--charcoal);
-      border-color: rgba(89, 101, 72, 0.12);
+      border: 1px solid rgba(37, 51, 34, 0.09);
+      min-width: 160px;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(73, 55, 37, 0.12);
+    .btn-light:hover {
+      background: white;
+      transform: translateY(-2px);
     }
+
+    /* COLLAGE */
 
     .hero-visual {
       position: relative;
-      min-height: 470px;
-      border-radius: 38px;
-      overflow: hidden;
-      background:
-        linear-gradient(rgba(37, 51, 34, 0.08), rgba(37, 51, 34, 0.18)),
-        url("Bitzahugs-website.png");
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 18px 42px rgba(73, 55, 37, 0.18);
-    }
-
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, rgba(255, 250, 243, 0.02), rgba(177, 109, 82, 0.18));
-      pointer-events: none;
-    }
-
-    .paint-note {
-      position: absolute;
-      right: 32px;
-      bottom: 40px;
-      width: 180px;
-      height: 180px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: white;
-      font-family: "Homemade Apple", cursive;
-      font-size: 1.15rem;
-      line-height: 1.5;
-      padding: 26px;
-      background: rgba(189, 115, 95, 0.82);
-      border-radius: 44% 56% 49% 51% / 46% 40% 60% 54%;
-      transform: rotate(-4deg);
-      box-shadow: 0 18px 26px rgba(73, 55, 37, 0.18);
       z-index: 2;
+      height: 650px;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(241, 216, 205, 0.55), transparent 32%),
+        radial-gradient(circle at 82% 72%, rgba(89, 101, 72, 0.13), transparent 36%),
+        rgba(255, 250, 243, 0.75);
+      border: 1px solid rgba(89, 101, 72, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      overflow: hidden;
     }
 
     .sparkle {
       position: absolute;
       color: var(--clay);
-      font-size: 1.8rem;
-      opacity: 0.75;
+      font-size: 2rem;
+      opacity: 0.72;
+      z-index: 4;
+      animation: twinkle 3s ease-in-out infinite;
     }
 
     .sparkle.one {
-      left: 46%;
-      top: 29%;
+      top: 105px;
+      right: 74px;
     }
 
     .sparkle.two {
-      left: 53%;
-      top: 23%;
-      font-size: 1.2rem;
+      bottom: 105px;
+      left: 310px;
+      animation-delay: 0.8s;
     }
 
-    .wave {
-      height: 48px;
-      background: linear-gradient(to bottom, transparent 0, rgba(255, 250, 243, 0.95) 60%);
-      border-radius: 50% 50% 0 0;
-      margin-top: -34px;
-      position: relative;
-      z-index: 5;
+    .sparkle.three {
+      top: 320px;
+      left: 38px;
+      animation-delay: 1.4s;
     }
+
+    @keyframes twinkle {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.45;
+      }
+      50% {
+        transform: scale(1.18);
+        opacity: 0.95;
+      }
+    }
+
+    .leaf {
+      position: absolute;
+      width: 100px;
+      height: 140px;
+      opacity: 0.36;
+      z-index: 1;
+    }
+
+    .leaf::before,
+    .leaf::after {
+      content: "";
+      position: absolute;
+      background: rgba(89, 101, 72, 0.35);
+      border-radius: 100% 0 100% 0;
+      width: 32px;
+      height: 62px;
+      transform: rotate(38deg);
+    }
+
+    .leaf::before {
+      left: 20px;
+      top: 22px;
+    }
+
+    .leaf::after {
+      left: 48px;
+      top: 62px;
+    }
+
+    .leaf.left {
+      left: 420px;
+      top: 230px;
+      transform: rotate(-25deg);
+    }
+
+    .leaf.right {
+      right: 42px;
+      bottom: 108px;
+      transform: rotate(24deg);
+    }
+
+    .label {
+      position: absolute;
+      z-index: 8;
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: var(--soft-shadow);
+      transform: rotate(-2deg);
+      white-space: nowrap;
+    }
+
+    .label.mobile {
+      top: 58px;
+      left: 395px;
+      background: #8d78a8;
+    }
+
+    .label.creative {
+      top: 178px;
+      right: 34px;
+      background: var(--clay);
+      transform: rotate(3deg);
+    }
+
+    .label.web {
+      bottom: 26px;
+      left: 70px;
+      background: var(--sage);
+      transform: rotate(-3deg);
+    }
+
+    .label.dev {
+      bottom: 40px;
+      right: 302px;
+      background: var(--sage);
+      transform: rotate(1deg);
+    }
+
+    .portfolio-img {
+      position: absolute;
+      display: block;
+      object-fit: cover;
+      background: #fff;
+      box-shadow: 0 22px 50px rgba(58, 43, 30, 0.19);
+      transition: 0.28s ease;
+    }
+
+    .portfolio-img:hover {
+      transform: translateY(-5px) scale(1.01);
+      z-index: 12;
+    }
+
+    .phone-shot {
+      width: 226px;
+      height: auto;
+      left: 240px;
+      top: 35px;
+      z-index: 7;
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(58, 43, 30, 0.22);
+    }
+
+    .hugi-card {
+      width: 218px;
+      height: auto;
+      top: 82px;
+      right: 110px;
+      z-index: 6;
+      border-radius: 24px;
+      transform: rotate(5deg);
+    }
+
+    .aradia-shot {
+      width: 540px;
+      height: 235px;
+      left: 64px;
+      bottom: 70px;
+      z-index: 5;
+      border-radius: 20px;
+      transform: rotate(-2deg);
+    }
+
+    .code-shot {
+      width: 390px;
+      height: 300px;
+      right: 52px;
+      bottom: 72px;
+      z-index: 4;
+      border-radius: 20px;
+      transform: rotate(1deg);
+      object-position: top left;
+    }
+
+    .doodle-arrow {
+      position: absolute;
+      z-index: 8;
+      font-family: "Homemade Apple", cursive;
+      color: var(--warm-brown);
+      opacity: 0.7;
+      font-size: 2rem;
+    }
+
+    .arrow-one {
+      top: 104px;
+      left: 520px;
+      transform: rotate(20deg);
+    }
+
+    .arrow-two {
+      bottom: 14px;
+      right: 405px;
+      transform: rotate(-8deg);
+    }
+
+    /* SECTIONS */
 
     section {
-      padding: 30px 38px 48px;
+      padding: 80px 58px;
+      border-top: 1px solid rgba(89, 101, 72, 0.08);
     }
 
-    .section-heading {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .section-heading .eyebrow {
-      margin-bottom: 4px;
-    }
-
-    .section-heading h2 {
+    .section-title {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.6rem, 5vw, 4rem);
       color: var(--deep-green);
+      font-size: clamp(2.7rem, 4vw, 4.6rem);
       line-height: 1;
-      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin-bottom: 38px;
     }
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
     .project-card {
-      background: rgba(255, 248, 239, 0.96);
-      border: 1px solid var(--border);
-      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(89, 101, 72, 0.1);
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: 0 12px 25px rgba(73, 55, 37, 0.08);
+      box-shadow: var(--soft-shadow);
       transition: 0.25s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 36px rgba(73, 55, 37, 0.14);
+      transform: translateY(-5px);
     }
 
-    .project-img {
-      height: 210px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .img-bitzahugs {
-      background:
-        linear-gradient(rgba(251, 232, 240, 0.18), rgba(251, 232, 240, 0.18)),
-        url("Bitzahugs-prototype.png");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .img-aradia {
-      background:
-        linear-gradient(rgba(20, 25, 18, 0.12), rgba(20, 25, 18, 0.12)),
-        url("Aradia-game.png");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .img-website {
-      background:
-        linear-gradient(rgba(65, 48, 36, 0.04), rgba(65, 48, 36, 0.06)),
-        url("Bitzahugs-website.png");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .img-nestloop {
-      background:
-        linear-gradient(rgba(255, 250, 243, 0.12), rgba(255, 250, 243, 0.12)),
-        url("Nestloop.png");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .img-academic {
-      background:
-        linear-gradient(rgba(30, 37, 29, 0.15), rgba(30, 37, 29, 0.25)),
-        url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80");
-      background-size: cover;
-      background-position: center;
+    .project-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
     }
 
     .project-content {
-      padding: 18px;
+      padding: 24px;
     }
 
     .project-content h3 {
-      color: var(--deep-green);
-      font-size: 1.05rem;
-      margin-bottom: 7px;
-    }
-
-    .project-content p {
-      color: var(--muted);
-      font-size: 0.88rem;
-      min-height: 54px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin: 14px 0 16px;
-    }
-
-    .tag {
-      font-size: 0.72rem;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: #f5e7dc;
-      border: 1px solid rgba(189, 115, 95, 0.16);
-      color: #6f4c3e;
-      font-weight: 700;
-    }
-
-    .case-link {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--deep-green);
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 0.95fr 1.15fr 0.8fr;
-      gap: 30px;
-      align-items: center;
-      padding-top: 10px;
-    }
-
-    .portrait {
-      min-height: 350px;
-      border-radius: 34px;
-      background:
-        linear-gradient(rgba(82, 58, 40, 0.04), rgba(82, 58, 40, 0.1)),
-        url("AmandaBenavidez.jpg");
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 16px 32px rgba(73, 55, 37, 0.12);
-    }
-
-    .about-text h2 {
       font-family: "Cormorant Garamond", serif;
       color: var(--deep-green);
-      font-size: clamp(2.1rem, 4vw, 3.2rem);
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-
-    .about-text p {
-      color: #49463d;
-      margin-bottom: 14px;
-      font-size: 0.98rem;
-    }
-
-    .about-icons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .mini-card {
-      background: rgba(255, 248, 239, 0.85);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--deep-green);
-    }
-
-    .side-polaroid {
-      background: rgba(255, 250, 243, 0.85);
-      border: 1px solid rgba(89, 101, 72, 0.14);
-      border-radius: 24px;
-      padding: 16px;
-      transform: rotate(2deg);
-      box-shadow: 0 16px 32px rgba(73, 55, 37, 0.12);
-    }
-
-    .polaroid-img {
-      height: 230px;
-      border-radius: 18px;
-      background:
-        linear-gradient(rgba(255, 250, 243, 0.1), rgba(255, 250, 243, 0.1)),
-        url("Aradia-game.png");
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 16px;
-    }
-
-    .side-polaroid p {
-      font-family: "Homemade Apple", cursive;
-      color: var(--warm-brown);
-      font-size: 0.95rem;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .quote-band {
-      margin: 18px 38px 46px;
-      background: linear-gradient(135deg, var(--sage), #717b5e);
-      color: white;
-      border-radius: 24px;
-      padding: 40px 24px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quote-band h2 {
-      font-family: "Homemade Apple", cursive;
-      font-weight: 400;
-      font-size: clamp(1.55rem, 3.5vw, 2.4rem);
-      line-height: 1.6;
-    }
-
-    .quote-band p {
-      margin-top: 8px;
-      opacity: 0.88;
-    }
-
-    .resume-section {
-      padding-top: 10px;
-    }
-
-    .resume-card {
-      max-width: 850px;
-      margin: 0 auto;
-      background: rgba(255, 248, 239, 0.92);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 12px 25px rgba(73, 55, 37, 0.08);
-      text-align: center;
-    }
-
-    .resume-card p {
-      color: var(--muted);
-      margin: 12px auto 22px;
-      max-width: 620px;
-    }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .skill-pill {
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: #f5e7dc;
-      border: 1px solid rgba(189, 115, 95, 0.16);
-      color: #6f4c3e;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .contact-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 28px;
-      padding: 34px 54px 42px;
-      background: rgba(255, 250, 243, 0.92);
-      border-top: 1px solid rgba(89, 101, 72, 0.1);
-    }
-
-    .footer-logo {
-      font-family: "Homemade Apple", cursive;
-      color: var(--deep-green);
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-    }
-
-    .contact-section h3 {
-      color: var(--deep-green);
-      margin-bottom: 12px;
-      font-size: 1rem;
-    }
-
-    .contact-section p,
-    .contact-section a {
-      color: var(--muted);
-      font-size: 0.92rem;
-      display: block;
+      font-size: 2rem;
       margin-bottom: 8px;
     }
 
-    .footer-quote {
-      background: var(--blush);
-      border-radius: 22px;
-      padding: 22px;
+    .project-content p {
+      color: #4e4941;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(241, 216, 205, 0.7);
       color: var(--warm-brown);
+    }
+
+    /* ABOUT */
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-note {
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(89, 101, 72, 0.1);
+      border-radius: 30px;
+      padding: 38px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .about-note p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #3d3932;
+      margin-bottom: 18px;
+    }
+
+    .about-card {
+      background:
+        linear-gradient(135deg, rgba(241, 216, 205, 0.7), rgba(255, 250, 243, 0.86)),
+        var(--soft-cream);
+      border-radius: 30px;
+      padding: 36px;
+      border: 1px solid rgba(189, 115, 95, 0.14);
+    }
+
+    .about-card h3 {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.35rem;
-      text-align: center;
-      line-height: 1.35;
+      color: var(--deep-green);
+      font-size: 2.4rem;
+      margin-bottom: 18px;
     }
 
-    .copyright {
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-list span {
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(89, 101, 72, 0.09);
+      padding: 11px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--deep-green);
+    }
+
+    /* CONTACT */
+
+    .contact {
       text-align: center;
-      padding: 16px;
-      font-size: 0.82rem;
+      background:
+        radial-gradient(circle at top, rgba(241, 216, 205, 0.55), transparent 45%),
+        rgba(255, 253, 248, 0.68);
+    }
+
+    .contact .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      padding: 28px;
+      text-align: center;
       color: var(--muted);
-      background: rgba(89, 101, 72, 0.08);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(89, 101, 72, 0.08);
     }
 
-    @media (max-width: 1050px) {
-      .about {
-        grid-template-columns: 1fr 1fr;
-      }
+    /* RESPONSIVE */
 
-      .side-polaroid {
-        grid-column: span 2;
-      }
-    }
-
-    @media (max-width: 820px) {
-      .page {
-        width: min(100% - 18px, 1180px);
-        margin: 9px auto;
-        border-radius: 24px;
-      }
-
-      .nav {
-        padding: 20px;
-        align-items: flex-start;
-        gap: 18px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
+    @media (max-width: 1200px) {
       .hero {
         grid-template-columns: 1fr;
-        padding: 38px 24px 28px;
       }
 
-      .hero h1 {
-        font-size: 4.5rem;
+      .hero-copy {
+        max-width: 760px;
       }
 
       .hero-visual {
-        min-height: 360px;
+        height: 620px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 10px;
+      }
+
+      header {
+        height: auto;
+        padding: 28px 22px;
+        align-items: flex-start;
+        gap: 22px;
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .connect-btn {
+        padding: 13px 18px;
+      }
+
+      .hero {
+        padding: 46px 22px 56px;
+      }
+
+      h1 {
+        font-size: clamp(4.2rem, 18vw, 6.5rem);
+        letter-spacing: -2px;
+      }
+
+      .script-line {
+        font-size: 1.35rem;
+      }
+
+      .hero-visual {
+        height: 760px;
+      }
+
+      .phone-shot {
+        width: 185px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 26px;
+      }
+
+      .hugi-card {
+        width: 178px;
+        right: 18px;
+        top: 252px;
+      }
+
+      .aradia-shot {
+        width: calc(100% - 48px);
+        height: 190px;
+        left: 24px;
+        bottom: 252px;
+      }
+
+      .code-shot {
+        width: calc(100% - 48px);
+        height: 220px;
+        right: 24px;
+        bottom: 24px;
+      }
+
+      .label.mobile {
+        left: 25px;
+        top: 34px;
+      }
+
+      .label.creative {
+        right: 20px;
+        top: 210px;
+      }
+
+      .label.web {
+        left: 25px;
+        bottom: 214px;
+      }
+
+      .label.dev {
+        right: 25px;
+        bottom: 218px;
+      }
+
+      .leaf,
+      .doodle-arrow {
+        display: none;
       }
 
       section {
-        padding: 28px 20px 38px;
+        padding: 58px 22px;
       }
 
-      .project-img {
-        height: 230px;
-      }
-
-      .about {
+      .project-grid,
+      .about-wrap {
         grid-template-columns: 1fr;
-      }
-
-      .side-polaroid {
-        grid-column: auto;
-      }
-
-      .contact-section {
-        grid-template-columns: 1fr;
-        padding: 32px 24px;
-      }
-
-      .quote-band {
-        margin: 16px 20px 38px;
       }
     }
 
     @media (max-width: 520px) {
-      .hero h1 {
-        font-size: 3.7rem;
+      .logo {
+        font-size: 1.25rem;
       }
 
-      .buttons {
-        flex-direction: column;
+      nav {
+        font-size: 0.88rem;
+      }
+
+      .button-row {
         align-items: stretch;
       }
 
       .btn {
-        justify-content: center;
+        width: 100%;
       }
 
-      .paint-note {
-        width: 140px;
-        height: 140px;
-        font-size: 0.92rem;
-        right: 20px;
-        bottom: 22px;
+      .hero-visual {
+        height: 680px;
+        border-radius: 28px;
       }
 
-      .about-icons {
-        grid-template-columns: 1fr;
+      .phone-shot {
+        width: 155px;
+      }
+
+      .hugi-card {
+        width: 145px;
+        top: 224px;
+      }
+
+      .aradia-shot {
+        height: 150px;
+        bottom: 238px;
+      }
+
+      .code-shot {
+        height: 190px;
+      }
+
+      .label {
+        font-size: 0.76rem;
+        padding: 9px 12px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
+  <div class="page-shell">
 
-    <nav class="nav">
+    <header>
       <a href="#home" class="logo">Amanda Benavidez <span>♡</span></a>
 
-      <div class="nav-links">
+      <nav>
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#resume">Resume</a>
-        <a href="#contact" class="nav-button">Let’s Connect ✨</a>
-      </div>
-    </nav>
+        <a href="#contact" class="connect-btn">Let’s Connect ✨</a>
+      </nav>
+    </header>
 
-    <main id="home" class="hero">
-      <div class="leaf-left"></div>
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <div class="intro">Hi, I’m ♡</div>
 
-      <div class="hero-copy">
-        <p style="font-family:'Cormorant Garamond', serif; font-size: 1.55rem; color: var(--deep-green); margin-bottom: 2px;">
-          Hi, I’m ♡
-        </p>
+          <h1>Amanda<br>Benavidez</h1>
 
-        <h1>Amanda<br>Benavidez</h1>
+          <div class="script-line">
+            Creative Founder, Software Development Student, Purposeful Builder
+          </div>
 
-        <div class="script">Creative Founder. Software Development Student. Purposeful Builder.</div>
+          <p>
+            I’m a software development student with a healthcare background, passionate about designing meaningful digital experiences that support families, caregivers, and cozy interactive worlds.
+          </p>
 
-        <p>
-          I’m a software development student with a healthcare background, passionate about designing meaningful digital experiences that support families, caregivers, and cozy interactive worlds.
-        </p>
-
-        <div class="buttons">
-          <a href="#projects" class="btn btn-primary">View My Projects →</a>
-          <a href="#" class="btn btn-secondary">Download Resume ↓</a>
-          <a href="#contact" class="btn btn-light">Get In Touch ✉</a>
+          <div class="button-row">
+            <a href="#projects" class="btn btn-primary">View My Projects →</a>
+            <a href="Amanda-Benavidez-Resume.pdf" class="btn btn-secondary" download>Download Resume ↓</a>
+            <a href="#contact" class="btn btn-light">Get In Touch ✉</a>
+          </div>
         </div>
-      </div>
 
-      <div class="hero-visual">
-        <div class="paint-note">Rooted in purpose,<br>built with heart. ♡</div>
-      </div>
+        <div class="hero-visual" aria-label="Portfolio project collage">
+          <div class="sparkle one">✧</div>
+          <div class="sparkle two">✦</div>
+          <div class="sparkle three">✧</div>
 
-      <div class="sparkle one">✧</div>
-      <div class="sparkle two">✦</div>
+          <div class="leaf left"></div>
+          <div class="leaf right"></div>
+
+          <div class="label mobile">Mobile App</div>
+          <div class="label creative">Creative Tech</div>
+          <div class="label web">Web/Game Design</div>
+          <div class="label dev">Development</div>
+
+          <div class="doodle-arrow arrow-one">↜</div>
+          <div class="doodle-arrow arrow-two">↝</div>
+
+          <img class="portfolio-img phone-shot" src="Homepage.png" alt="BitzaHugs mobile app homepage screenshot">
+          <img class="portfolio-img hugi-card" src="Meet-Hugi.png" alt="Meet Hugi companion card">
+          <img class="portfolio-img aradia-shot" src="Aradia-gameplay.png" alt="Aradia game concept screenshot">
+          <img class="portfolio-img code-shot" src="code.png" alt="React Native code screenshot">
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          A collection of apps, websites, and creative technology projects rooted in care, storytelling, and thoughtful design.
+        </p>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="Homepage.png" alt="BitzaHugs app preview">
+            <div class="project-content">
+              <h3>BitzaHugs</h3>
+              <p>
+                A gentle family support app designed for routines, emotional check-ins, transitions, calming tools, and caregiver encouragement.
+              </p>
+              <div class="tag-row">
+                <span class="tag">React Native</span>
+                <span class="tag">UX Design</span>
+                <span class="tag">Family Support</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="Aradia-gameplay.png" alt="Aradia game preview">
+            <div class="project-content">
+              <h3>Aradia</h3>
+              <p>
+                A cozy dark fantasy life sim concept centered on atmosphere, memory, magic, rituals, and emotional immersion.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Game Design</span>
+                <span class="tag">Worldbuilding</span>
+                <span class="tag">Creative Direction</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="code.png" alt="Code preview">
+            <div class="project-content">
+              <h3>Development Work</h3>
+              <p>
+                Front-end and mobile development work focused on clean UI, thoughtful structure, and meaningful user experiences.
+              </p>
+              <div class="tag-row">
+                <span class="tag">JavaScript</span>
+                <span class="tag">React</span>
+                <span class="tag">React Native</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="about-wrap">
+          <div>
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+              I blend software development, healthcare experience, creative direction, and lived experience to build digital products with purpose.
+            </p>
+          </div>
+
+          <div class="about-note">
+            <p>
+              My work is rooted in empathy, clarity, and care. I’m especially drawn to projects that support families, make hard days feel lighter, or create beautiful worlds people can emotionally connect with.
+            </p>
+
+            <div class="about-card">
+              <h3>Skills & Focus</h3>
+              <div class="skill-list">
+                <span>React Native</span>
+                <span>HTML/CSS</span>
+                <span>JavaScript</span>
+                <span>UI/UX Design</span>
+                <span>Healthcare IT</span>
+                <span>Creative Direction</span>
+                <span>Game Design</span>
+                <span>Product Strategy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume">
+        <h2 class="section-title">Resume</h2>
+        <p class="section-subtitle">
+          My background includes healthcare administration, software development studies, product design, and hands-on development work across mobile apps, websites, and creative digital products.
+        </p>
+
+        <a href="Amanda-Benavidez-Resume.pdf" class="btn btn-primary" download>Download Resume ↓</a>
+      </section>
+
+      <section class="contact" id="contact">
+        <h2 class="section-title">Let’s Build Something Meaningful</h2>
+        <p class="section-subtitle">
+          I’m open to opportunities in software development, healthcare technology, UX design, creative tech, and mission-driven digital products.
+        </p>
+
+        <div class="button-row" style="justify-content:center;">
+          <a href="mailto:amandabenavidez05@gmail.com" class="btn btn-primary">Email Me ✉</a>
+          <a href="#projects" class="btn btn-secondary">View Projects →</a>
+        </div>
+      </section>
     </main>
 
-    <div class="wave"></div>
-
-    <section id="projects">
-      <div class="section-heading">
-        <div class="eyebrow">Featured Projects</div>
-        <h2>Things I’m Building ♡</h2>
-      </div>
-
-      <div class="project-grid">
-
-        <article class="project-card">
-          <div class="project-img img-bitzahugs"></div>
-          <div class="project-content">
-            <h3>BitzaHugs App</h3>
-            <p>A family support app designed to help autism caregivers with routines, calming tools, and daily encouragement.</p>
-            <div class="tags">
-              <span class="tag">UX Design</span>
-              <span class="tag">Mobile App</span>
-              <span class="tag">React Native</span>
-            </div>
-            <a href="#" class="case-link">View Case Study →</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-img img-aradia"></div>
-          <div class="project-content">
-            <h3>Aradia</h3>
-            <p>A cozy dark fantasy life sim game concept focused on atmosphere, rituals, relationships, and worldbuilding.</p>
-            <div class="tags">
-              <span class="tag">Game Design</span>
-              <span class="tag">Worldbuilding</span>
-              <span class="tag">Branding</span>
-            </div>
-            <a href="#" class="case-link">View Case Study →</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-img img-website"></div>
-          <div class="project-content">
-            <h3>BitzaHugs Website</h3>
-            <p>A soft, approachable landing page and waitlist site created for the BitzaHugs app launch.</p>
-            <div class="tags">
-              <span class="tag">Web Design</span>
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">Launch</span>
-            </div>
-            <a href="#" class="case-link">View Case Study →</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-img img-nestloop"></div>
-          <div class="project-content">
-            <h3>Nestloop</h3>
-            <p>A family organization app concept for shared calendars, routines, planning, and household coordination.</p>
-            <div class="tags">
-              <span class="tag">UX Design</span>
-              <span class="tag">Productivity</span>
-              <span class="tag">Concept</span>
-            </div>
-            <a href="#" class="case-link">View Case Study →</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-img img-academic"></div>
-          <div class="project-content">
-            <h3>Academic Projects</h3>
-            <p>Programming, database, and software development coursework completed while pursuing my degree.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">Coursework</span>
-            </div>
-            <a href="#" class="case-link">View Projects →</a>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <div class="portrait"></div>
-
-      <div class="about-text">
-        <div class="eyebrow">About Me</div>
-        <h2>A little about me ♡</h2>
-
-        <p>
-          I’m a mom, a caregiver, a lifelong learner, and a builder of ideas. With a background in healthcare and a heart for people, I’m pursuing my Software Development degree to create digital tools that make life more organized, supportive, and meaningful.
-        </p>
-
-        <p>
-          My work blends empathy, structure, creativity, and problem-solving. I’m especially drawn to products that help families feel less overwhelmed and more connected.
-        </p>
-
-        <div class="about-icons">
-          <div class="mini-card">♡ Healthcare Background</div>
-          <div class="mini-card">⌘ Software Development Student</div>
-          <div class="mini-card">✎ UX & Product Design</div>
-          <div class="mini-card">✦ Creative Storyteller</div>
-        </div>
-      </div>
-
-      <div class="side-polaroid">
-        <div class="polaroid-img"></div>
-        <p>Building meaningful things with intention and heart. ♡</p>
-      </div>
-    </section>
-
-    <div class="quote-band">
-      <h2>I design with empathy.<br>I build with purpose. ♡</h2>
-      <p>Let’s create something beautiful together.</p>
-    </div>
-
-    <section id="resume" class="resume-section">
-      <div class="section-heading">
-        <div class="eyebrow">Resume</div>
-        <h2>Skills & Experience</h2>
-      </div>
-
-      <div class="resume-card">
-        <h3>Software Development Student · Healthcare Background · UX-Minded Builder</h3>
-
-        <p>
-          My experience combines healthcare operations, caregiving insight, product design, and software development. I’m building a portfolio focused on meaningful apps, supportive tools, and creative digital products.
-        </p>
-
-        <a href="#" class="btn btn-primary">Download Resume ↓</a>
-
-        <div class="skills-list">
-          <span class="skill-pill">HTML</span>
-          <span class="skill-pill">CSS</span>
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">React Native</span>
-          <span class="skill-pill">UX Design</span>
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">Canva</span>
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">MySQL</span>
-          <span class="skill-pill">Healthcare IT</span>
-          <span class="skill-pill">Product Planning</span>
-          <span class="skill-pill">Creative Direction</span>
-        </div>
-      </div>
-    </section>
-
-    <footer id="contact" class="contact-section">
-      <div>
-        <div class="footer-logo">Amanda Benavidez ♡</div>
-        <p>Building meaningful digital experiences for families, care, and cozy worlds.</p>
-      </div>
-
-      <div>
-        <h3>Let’s Connect</h3>
-        <a href="mailto:amandabenavidez05@gmail.com">✉ amandabenavidez05@gmail.com</a>
-        <a href="#">▣ LinkedIn coming soon</a>
-        <a href="#">⌘ GitHub coming soon</a>
-      </div>
-
-      <div class="footer-quote">
-        “You don’t have to do it all today.<br>Just keep building.”
-      </div>
+    <footer>
+      © 2026 Amanda Benavidez. Built with purpose, creativity, and heart.
     </footer>
-
-    <div class="copyright">
-      © 2026 Amanda Benavidez · Built with heart, coffee, and a lot of late nights ☕
-    </div>
 
   </div>
 </body>
