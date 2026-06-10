@@ -25,15 +25,8 @@
       --radius: 34px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: "DM Sans", sans-serif;
@@ -46,10 +39,7 @@
       padding: 22px;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     .page-shell {
       width: min(1480px, 100%);
@@ -63,7 +53,6 @@
     }
 
     /* NAV */
-
     header {
       height: 112px;
       display: flex;
@@ -100,25 +89,18 @@
       font-size: 0.96rem;
     }
 
-    nav a {
-      position: relative;
-      color: #211f1b;
-    }
+    nav a { position: relative; color: #211f1b; }
 
     nav a::after {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: -7px;
-      width: 0%;
-      height: 2px;
+      left: 0; bottom: -7px;
+      width: 0%; height: 2px;
       background: var(--clay);
       transition: 0.25s ease;
     }
 
-    nav a:hover::after {
-      width: 100%;
-    }
+    nav a:hover::after { width: 100%; }
 
     .connect-btn {
       background: var(--sage);
@@ -129,13 +111,9 @@
       transition: 0.25s ease;
     }
 
-    .connect-btn:hover {
-      transform: translateY(-2px);
-      background: var(--deep-green);
-    }
+    .connect-btn:hover { transform: translateY(-2px); background: var(--deep-green); }
 
     /* HERO */
-
     .hero {
       position: relative;
       min-height: calc(100vh - 156px);
@@ -150,24 +128,20 @@
     .hero::before {
       content: "";
       position: absolute;
-      width: 240px;
-      height: 240px;
+      width: 240px; height: 240px;
       border-radius: 50%;
       background: rgba(89, 101, 72, 0.09);
-      left: -90px;
-      top: 250px;
+      left: -90px; top: 250px;
       filter: blur(2px);
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      width: 320px;
-      height: 320px;
+      width: 320px; height: 320px;
       border-radius: 50%;
       background: rgba(217, 160, 144, 0.18);
-      right: -150px;
-      bottom: -120px;
+      right: -150px; bottom: -120px;
       filter: blur(6px);
     }
 
@@ -221,42 +195,25 @@
     }
 
     .btn {
-      border: none;
-      outline: none;
-      cursor: pointer;
+      border: none; outline: none; cursor: pointer;
       padding: 17px 27px;
       border-radius: 999px;
-      font-weight: 800;
-      font-size: 1rem;
+      font-weight: 800; font-size: 1rem;
       transition: 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-flex; align-items: center; justify-content: center;
       gap: 8px;
       min-width: 180px;
     }
 
-    .btn-primary {
-      background: var(--sage);
-      color: white;
-      box-shadow: var(--soft-shadow);
-    }
-
-    .btn-primary:hover {
-      background: var(--deep-green);
-      transform: translateY(-2px);
-    }
+    .btn-primary { background: var(--sage); color: white; box-shadow: var(--soft-shadow); }
+    .btn-primary:hover { background: var(--deep-green); transform: translateY(-2px); }
 
     .btn-secondary {
       background: rgba(255, 255, 255, 0.45);
       color: var(--clay);
       border: 1px solid rgba(189, 115, 95, 0.22);
     }
-
-    .btn-secondary:hover {
-      background: white;
-      transform: translateY(-2px);
-    }
+    .btn-secondary:hover { background: white; transform: translateY(-2px); }
 
     .btn-light {
       background: rgba(255, 255, 255, 0.68);
@@ -264,232 +221,122 @@
       border: 1px solid rgba(37, 51, 34, 0.09);
       min-width: 160px;
     }
-
-    .btn-light:hover {
-      background: white;
-      transform: translateY(-2px);
-    }
+    .btn-light:hover { background: white; transform: translateY(-2px); }
 
     /* COLLAGE */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      height: 650px;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(241, 216, 205, 0.55), transparent 32%),
+        radial-gradient(circle at 82% 72%, rgba(89, 101, 72, 0.13), transparent 36%),
+        rgba(255, 250, 243, 0.75);
+      border: 1px solid rgba(89, 101, 72, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+    }
 
-.hero-visual {
-  position: relative;
-  z-index: 2;
-  height: 650px;
-  border-radius: 38px;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(241, 216, 205, 0.55), transparent 32%),
-    radial-gradient(circle at 82% 72%, rgba(89, 101, 72, 0.13), transparent 36%),
-    rgba(255, 250, 243, 0.75);
-  border: 1px solid rgba(89, 101, 72, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
-  overflow: hidden;
-}
+    .sparkle {
+      position: absolute;
+      color: var(--clay);
+      font-size: 2rem;
+      opacity: 0.72;
+      z-index: 10;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    .sparkle.one  { top: 145px; right: 72px; }
+    .sparkle.two  { bottom: 118px; left: 380px; animation-delay: 0.8s; }
+    .sparkle.three { top: 280px; left: 56px; animation-delay: 1.4s; }
 
-.sparkle {
-  position: absolute;
-  color: var(--clay);
-  font-size: 2rem;
-  opacity: 0.72;
-  z-index: 10;
-  animation: twinkle 3s ease-in-out infinite;
-}
+    @keyframes twinkle {
+      0%, 100% { transform: scale(1); opacity: 0.45; }
+      50% { transform: scale(1.18); opacity: 0.95; }
+    }
 
-.sparkle.one {
-  top: 145px;
-  right: 72px;
-}
+    .leaf {
+      position: absolute;
+      width: 100px; height: 140px;
+      opacity: 0.36; z-index: 1;
+    }
+    .leaf::before, .leaf::after {
+      content: "";
+      position: absolute;
+      background: rgba(89, 101, 72, 0.35);
+      border-radius: 100% 0 100% 0;
+      width: 32px; height: 62px;
+      transform: rotate(38deg);
+    }
+    .leaf::before { left: 20px; top: 22px; }
+    .leaf::after  { left: 48px; top: 62px; }
+    .leaf.left  { left: 515px; top: 285px; transform: rotate(-25deg); }
+    .leaf.right { right: 58px; bottom: 120px; transform: rotate(24deg); }
 
-.sparkle.two {
-  bottom: 118px;
-  left: 380px;
-  animation-delay: 0.8s;
-}
+    .label {
+      position: absolute;
+      z-index: 20;
+      color: white;
+      font-weight: 800; font-size: 0.95rem;
+      letter-spacing: 0.2px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: var(--soft-shadow);
+      white-space: nowrap;
+    }
 
-.sparkle.three {
-  top: 280px;
-  left: 56px;
-  animation-delay: 1.4s;
-}
+    .label.mobile   { top: 58px; right: 95px;   background: #8d78a8; transform: rotate(5deg); }
+    .label.creative { bottom: 30px; right: 250px; background: #d9a090; transform: rotate(-2deg); }
+    .label.web      { top: 46px; left: 82px;     background: var(--sage); transform: rotate(-5deg); }
+    .label.dev      { bottom: 34px; left: 96px;  background: var(--clay); transform: rotate(-3deg); }
 
-@keyframes twinkle {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.45;
-  }
+    .portfolio-img {
+      position: absolute;
+      display: block;
+      object-fit: cover;
+      background: #fff;
+      box-shadow: 0 22px 50px rgba(58, 43, 30, 0.19);
+      transition: 0.28s ease;
+    }
+    .portfolio-img:hover { transform: translateY(-5px) scale(1.01); z-index: 30; }
 
-  50% {
-    transform: scale(1.18);
-    opacity: 0.95;
-  }
-}
+    .phone-shot {
+      width: 270px; height: auto;
+      right: 235px; top: 76px; z-index: 12;
+      border-radius: 34px;
+      box-shadow: 0 25px 55px rgba(58, 43, 30, 0.24);
+    }
+    .aradia-shot {
+      width: 440px; height: 225px;
+      left: 95px; top: 126px; z-index: 5;
+      border-radius: 20px;
+      transform: rotate(-4deg);
+      object-position: center;
+    }
+    .code-shot {
+      width: 340px; height: 280px;
+      left: 35px; bottom: 82px; z-index: 8;
+      border-radius: 20px;
+      transform: rotate(-1deg);
+      object-position: top left;
+    }
+    .hugi-card {
+      width: 230px; height: auto;
+      right: 70px; bottom: 52px; z-index: 9;
+      border-radius: 24px;
+      transform: rotate(6deg);
+    }
 
-.leaf {
-  position: absolute;
-  width: 100px;
-  height: 140px;
-  opacity: 0.36;
-  z-index: 1;
-}
+    .doodle-arrow {
+      position: absolute; z-index: 20;
+      font-family: "Homemade Apple", cursive;
+      color: var(--warm-brown);
+      opacity: 0.65; font-size: 2rem;
+    }
+    .arrow-one { top: 88px; right: 205px; transform: rotate(18deg); }
+    .arrow-two { bottom: 36px; left: 265px; transform: rotate(-8deg); }
 
-.leaf::before,
-.leaf::after {
-  content: "";
-  position: absolute;
-  background: rgba(89, 101, 72, 0.35);
-  border-radius: 100% 0 100% 0;
-  width: 32px;
-  height: 62px;
-  transform: rotate(38deg);
-}
-
-.leaf::before {
-  left: 20px;
-  top: 22px;
-}
-
-.leaf::after {
-  left: 48px;
-  top: 62px;
-}
-
-.leaf.left {
-  left: 515px;
-  top: 285px;
-  transform: rotate(-25deg);
-}
-
-.leaf.right {
-  right: 58px;
-  bottom: 120px;
-  transform: rotate(24deg);
-}
-
-.label {
-  position: absolute;
-  z-index: 20;
-  color: white;
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.2px;
-  padding: 12px 20px;
-  border-radius: 12px;
-  box-shadow: var(--soft-shadow);
-  transform: rotate(-2deg);
-  white-space: nowrap;
-}
-
-.label.mobile {
-  top: 58px;
-  right: 95px;
-  background: #8d78a8;
-  transform: rotate(5deg);
-}
-
-.label.creative {
-  bottom: 30px;
-  right: 250px;
-  background: #d9a090;
-  transform: rotate(-2deg);
-}
-
-.label.web {
-  top: 46px;
-  left: 82px;
-  background: var(--sage);
-  transform: rotate(-5deg);
-}
-
-.label.dev {
-  bottom: 34px;
-  left: 96px;
-  background: var(--clay);
-  transform: rotate(-3deg);
-}
-
-.portfolio-img {
-  position: absolute;
-  display: block;
-  object-fit: cover;
-  background: #fff;
-  box-shadow: 0 22px 50px rgba(58, 43, 30, 0.19);
-  transition: 0.28s ease;
-}
-
-.portfolio-img:hover {
-  transform: translateY(-5px) scale(1.01);
-  z-index: 30;
-}
-
-/* Main phone screenshot */
-.phone-shot {
-  width: 270px;
-  height: auto;
-  right: 235px;
-  top: 76px;
-  z-index: 12;
-  border-radius: 34px;
-  box-shadow: 0 25px 55px rgba(58, 43, 30, 0.24);
-}
-
-/* Aradia web/game card behind phone */
-.aradia-shot {
-  width: 440px;
-  height: 225px;
-  left: 95px;
-  top: 126px;
-  z-index: 5;
-  border-radius: 20px;
-  transform: rotate(-4deg);
-  object-position: center;
-}
-
-/* Code card lower left */
-.code-shot {
-  width: 340px;
-  height: 280px;
-  left: 35px;
-  bottom: 82px;
-  z-index: 8;
-  border-radius: 20px;
-  transform: rotate(-1deg);
-  object-position: top left;
-}
-
-/* Hugi card lower right */
-.hugi-card {
-  width: 230px;
-  height: auto;
-  right: 70px;
-  bottom: 52px;
-  z-index: 9;
-  border-radius: 24px;
-  transform: rotate(6deg);
-}
-
-/* Soft arrows */
-.doodle-arrow {
-  position: absolute;
-  z-index: 20;
-  font-family: "Homemade Apple", cursive;
-  color: var(--warm-brown);
-  opacity: 0.65;
-  font-size: 2rem;
-}
-
-.arrow-one {
-  top: 88px;
-  right: 205px;
-  transform: rotate(18deg);
-}
-
-.arrow-two {
-  bottom: 36px;
-  left: 265px;
-  transform: rotate(-8deg);
-}
     /* SECTIONS */
-
     section {
       padding: 80px 58px;
       border-top: 1px solid rgba(89, 101, 72, 0.08);
@@ -511,9 +358,10 @@
       margin-bottom: 38px;
     }
 
+    /* PROJECT GRID — 2×2 */
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
@@ -524,28 +372,38 @@
       overflow: hidden;
       box-shadow: var(--soft-shadow);
       transition: 0.25s ease;
+      position: relative;
     }
+    .project-card:hover { transform: translateY(-5px); }
 
-    .project-card:hover {
-      transform: translateY(-5px);
+    .project-card .card-img-wrap {
+      position: relative;
+      overflow: hidden;
     }
 
     .project-card img {
       width: 100%;
-      height: 230px;
+      height: 240px;
       object-fit: cover;
       display: block;
     }
 
-    .project-content {
-      padding: 24px;
+    /* App icon style for Epilune & LumaRise promo images */
+    .project-card img.promo-poster {
+      object-fit: cover;
+      object-position: top center;
     }
+
+    .project-content { padding: 26px; }
 
     .project-content h3 {
       font-family: "Cormorant Garamond", serif;
       color: var(--deep-green);
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .project-content p {
@@ -554,11 +412,7 @@
       margin-bottom: 16px;
     }
 
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .tag {
       font-size: 0.78rem;
@@ -569,8 +423,43 @@
       color: var(--warm-brown);
     }
 
-    /* ABOUT */
+    /* Status badges */
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .badge-live {
+      background: rgba(89, 101, 72, 0.12);
+      color: var(--sage);
+      border: 1px solid rgba(89, 101, 72, 0.22);
+    }
+    .badge-soon {
+      background: rgba(141, 120, 168, 0.12);
+      color: #7a5fa0;
+      border: 1px solid rgba(141, 120, 168, 0.28);
+    }
+    .badge-dev {
+      background: rgba(189, 115, 95, 0.1);
+      color: var(--clay);
+      border: 1px solid rgba(189, 115, 95, 0.24);
+    }
 
+    /* Colored top accent bar per project */
+    .card-accent {
+      height: 4px;
+      width: 100%;
+      display: block;
+    }
+    .accent-bitza   { background: linear-gradient(90deg, #596548, #8a5f49); }
+    .accent-luma    { background: linear-gradient(90deg, #3b2561, #c9a44a); }
+    .accent-epilune { background: linear-gradient(90deg, #9b7ec8, #c9a44a); }
+    .accent-aradia  { background: linear-gradient(90deg, #253322, #bd735f); }
+
+    /* ABOUT */
     .about-wrap {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -585,7 +474,6 @@
       padding: 38px;
       box-shadow: var(--soft-shadow);
     }
-
     .about-note p {
       font-size: 1.1rem;
       line-height: 1.8;
@@ -601,7 +489,6 @@
       padding: 36px;
       border: 1px solid rgba(189, 115, 95, 0.14);
     }
-
     .about-card h3 {
       font-family: "Cormorant Garamond", serif;
       color: var(--deep-green);
@@ -609,12 +496,7 @@
       margin-bottom: 18px;
     }
 
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
+    .skill-list { display: flex; flex-wrap: wrap; gap: 10px; }
     .skill-list span {
       background: rgba(255, 255, 255, 0.68);
       border: 1px solid rgba(89, 101, 72, 0.09);
@@ -625,18 +507,13 @@
     }
 
     /* CONTACT */
-
     .contact {
       text-align: center;
       background:
         radial-gradient(circle at top, rgba(241, 216, 205, 0.55), transparent 45%),
         rgba(255, 253, 248, 0.68);
     }
-
-    .contact .section-subtitle {
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .contact .section-subtitle { margin-left: auto; margin-right: auto; }
 
     footer {
       padding: 28px;
@@ -647,125 +524,38 @@
     }
 
     /* RESPONSIVE */
-
     @media (max-width: 1200px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { max-width: 760px; }
 
-      .hero-copy {
-        max-width: 760px;
-      }
+      .hero-visual { height: 760px; }
+      .phone-shot  { width: 190px; right: 50%; transform: translateX(50%); top: 48px; }
+      .aradia-shot { width: calc(100% - 56px); height: 180px; left: 28px; top: 230px; }
+      .code-shot   { width: calc(100% - 56px); height: 210px; left: 28px; bottom: 36px; }
+      .hugi-card   { width: 170px; right: 26px; top: 420px; }
 
-     .hero-visual {
-  height: 760px;
-}
+      .label.mobile   { top: 25px; right: 36px; }
+      .label.web      { top: 190px; left: 36px; }
+      .label.dev      { bottom: 220px; left: 36px; }
+      .label.creative { top: 390px; right: 36px; }
 
-.phone-shot {
-  width: 190px;
-  right: 50%;
-  transform: translateX(50%);
-  top: 48px;
-}
+      .leaf, .doodle-arrow { display: none; }
 
-.aradia-shot {
-  width: calc(100% - 56px);
-  height: 180px;
-  left: 28px;
-  top: 230px;
-}
-
-.code-shot {
-  width: calc(100% - 56px);
-  height: 210px;
-  left: 28px;
-  bottom: 36px;
-}
-
-.hugi-card {
-  width: 170px;
-  right: 26px;
-  top: 420px;
-}
-
-.label.mobile {
-  top: 25px;
-  right: 36px;
-}
-
-.label.web {
-  top: 190px;
-  left: 36px;
-}
-
-.label.dev {
-  bottom: 220px;
-  left: 36px;
-}
-
-.label.creative {
-  top: 390px;
-  right: 36px;
-}
-
-.leaf,
-.doodle-arrow {
-  display: none;
-}
-      section {
-        padding: 58px 22px;
-      }
-
-      .project-grid,
-      .about-wrap {
-        grid-template-columns: 1fr;
-      }
+      section { padding: 58px 22px; }
+      .project-grid, .about-wrap { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 520px) {
-      .logo {
-        font-size: 1.25rem;
-      }
-
-      nav {
-        font-size: 0.88rem;
-      }
-
-      .button-row {
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .hero-visual {
-        height: 680px;
-        border-radius: 28px;
-      }
-
-      .phone-shot {
-        width: 155px;
-      }
-
-      .hugi-card {
-        width: 145px;
-        top: 224px;
-      }
-
-      .aradia-shot {
-        height: 150px;
-        bottom: 238px;
-      }
-
-      .code-shot {
-        height: 190px;
-      }
-
-      .label {
-        font-size: 0.76rem;
-        padding: 9px 12px;
-      }
+      .logo { font-size: 1.25rem; }
+      nav { font-size: 0.88rem; }
+      .button-row { align-items: stretch; }
+      .btn { width: 100%; }
+      .hero-visual { height: 680px; border-radius: 28px; }
+      .phone-shot { width: 155px; }
+      .hugi-card  { width: 145px; top: 224px; }
+      .aradia-shot { height: 150px; bottom: 238px; }
+      .code-shot { height: 190px; }
+      .label { font-size: 0.76rem; padding: 9px 12px; }
     }
   </style>
 </head>
@@ -775,31 +565,26 @@
 
     <header>
       <a href="#home" class="logo">Amanda Benavidez <span>♡</span></a>
-
       <nav>
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#resume">Resume</a>
-        <a href="#contact" class="connect-btn">Let’s Connect ✨</a>
+        <a href="#contact" class="connect-btn">Let's Connect ✨</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" id="home">
         <div class="hero-copy">
-          <div class="intro">Hi, I’m ♡</div>
-
+          <div class="intro">Hi, I'm ♡</div>
           <h1>Amanda<br>Benavidez</h1>
-
           <div class="script-line">
-            Creative Founder, Software Development Student, Purposeful Builder
+            Solo Founder, Software Developer, Purposeful Builder
           </div>
-
           <p>
-            I’m a software development student with a healthcare background, passionate about designing meaningful digital experiences that support families, caregivers, and cozy interactive worlds.
+            I build mobile apps from scratch — solo — rooted in real experience. From caregiver support tools and AI wellness apps to literary journaling and cozy dark fantasy worlds, everything I make starts with a feeling and ends with something that works.
           </p>
-
           <div class="button-row">
             <a href="#projects" class="btn btn-primary">View My Projects →</a>
             <a href="Amanda-Benavidez-Resume.pdf" class="btn btn-secondary" download>Download Resume ↓</a>
@@ -815,10 +600,10 @@
           <div class="leaf left"></div>
           <div class="leaf right"></div>
 
-          <div class="label mobile">Mobile App</div>
-          <div class="label creative">Creative Tech</div>
+          <div class="label mobile">Mobile Apps</div>
+          <div class="label creative">AI-Powered</div>
           <div class="label web">Web/Game Design</div>
-          <div class="label dev">Development</div>
+          <div class="label dev">React Native</div>
 
           <div class="doodle-arrow arrow-one">↜</div>
           <div class="doodle-arrow arrow-two">↝</div>
@@ -833,54 +618,96 @@
       <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <p class="section-subtitle">
-          A collection of apps, websites, and creative technology projects rooted in care, storytelling, and thoughtful design.
+          Four apps. Four distinct worlds. All built solo — from concept and design to code and launch — under Aradia Studios.
         </p>
 
         <div class="project-grid">
+
+          <!-- BitzaHugs -->
           <article class="project-card">
-            <img src="Homepage.png" alt="BitzaHugs app preview">
+            <span class="card-accent accent-bitza"></span>
+            <div class="card-img-wrap">
+              <img src="Homepage.png" alt="BitzaHugs app preview">
+            </div>
             <div class="project-content">
-              <h3>BitzaHugs</h3>
+              <h3>BitzaHugs <span class="badge badge-live">Live on App Store</span></h3>
               <p>
-                A gentle family support app designed for routines, emotional check-ins, transitions, calming tools, and caregiver encouragement.
+                A family support app built from personal experience as a caregiver. Gentle routines, emotional check-ins, calming tools, behavioral tracking, and AI-powered encouragement for parents of children with additional needs.
               </p>
               <div class="tag-row">
                 <span class="tag">React Native</span>
-                <span class="tag">UX Design</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">RevenueCat</span>
                 <span class="tag">Family Support</span>
+                <span class="tag">UX Design</span>
               </div>
             </div>
           </article>
 
+          <!-- LumaRise -->
           <article class="project-card">
-            <img src="Aradia-gameplay.png" alt="Aradia game preview">
+            <span class="card-accent accent-luma"></span>
+            <div class="card-img-wrap">
+              <img src="LumaRise-promo.png" alt="LumaRise AI manifestation journal app" class="promo-poster"
+                onerror="this.style.background='linear-gradient(135deg,#1e1040,#3b2561)';this.style.display='block';this.style.height='240px';">
+            </div>
             <div class="project-content">
-              <h3>Aradia</h3>
+              <h3>LumaRise <span class="badge badge-soon">Coming to App Store</span></h3>
               <p>
-                A cozy dark fantasy life sim concept centered on atmosphere, memory, magic, rituals, and emotional immersion.
+                An AI-powered manifestation and journaling app for women in the wellness space. Daily intentions, personalized affirmations, moon rituals, streak tracking, and a private journal — all in a midnight purple and gold aesthetic.
+              </p>
+              <div class="tag-row">
+                <span class="tag">React Native</span>
+                <span class="tag">Claude API</span>
+                <span class="tag">Railway</span>
+                <span class="tag">RevenueCat</span>
+                <span class="tag">Wellness</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Epilune -->
+          <article class="project-card">
+            <span class="card-accent accent-epilune"></span>
+            <div class="card-img-wrap">
+              <img src="Epilune-promo.png" alt="Epilune book journaling app" class="promo-poster"
+                onerror="this.style.background='linear-gradient(135deg,#f3eaf8,#d6c6ec)';this.style.display='block';this.style.height='240px';">
+            </div>
+            <div class="project-content">
+              <h3>Epilune <span class="badge badge-dev">In Development</span></h3>
+              <p>
+                Close the book. Keep the feeling. A literary journaling app for readers who want to hold onto the feelings, quotes, characters, and moments that stay with them after the final page. Book reflections, reading seasons, and a beautiful space for your reading life.
+              </p>
+              <div class="tag-row">
+                <span class="tag">React Native</span>
+                <span class="tag">Expo</span>
+                <span class="tag">Book Journaling</span>
+                <span class="tag">RevenueCat</span>
+                <span class="tag">Product Design</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Aradia -->
+          <article class="project-card">
+            <span class="card-accent accent-aradia"></span>
+            <div class="card-img-wrap">
+              <img src="Aradia-gameplay.png" alt="Aradia: In the Vale of Elarune game concept">
+            </div>
+            <div class="project-content">
+              <h3>Aradia <span class="badge badge-dev">Pre-Production</span></h3>
+              <p>
+                A cozy dark fantasy life simulation game set in the Vale of Elarune. Grow, brew, enchant — and find a world that feels like home. Serving as solo creative director on all game design, worldbuilding, narrative systems, and brand direction.
               </p>
               <div class="tag-row">
                 <span class="tag">Game Design</span>
                 <span class="tag">Worldbuilding</span>
                 <span class="tag">Creative Direction</span>
+                <span class="tag">Narrative Design</span>
               </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <img src="code.png" alt="Code preview">
-            <div class="project-content">
-              <h3>Development Work</h3>
-              <p>
-                Front-end and mobile development work focused on clean UI, thoughtful structure, and meaningful user experiences.
-              </p>
-              <div class="tag-row">
-                <span class="tag">JavaScript</span>
-                <span class="tag">React</span>
-                <span class="tag">React Native</span>
-              </div>
-            </div>
-          </article>
         </div>
       </section>
 
@@ -895,20 +722,27 @@
 
           <div class="about-note">
             <p>
-              My work is rooted in empathy, clarity, and care. I’m especially drawn to projects that support families, make hard days feel lighter, or create beautiful worlds people can emotionally connect with.
+              I'm a self-taught developer and solo founder who builds everything myself — the code, the design, the product strategy, and the brand. My work is rooted in empathy and care, whether I'm supporting families through a hard day or helping readers hold onto a feeling a book gave them.
+            </p>
+            <p>
+              I'm the founder of Aradia Studios, home to BitzaHugs, LumaRise, Epilune, and the game Aradia: In the Vale of Elarune.
             </p>
 
             <div class="about-card">
               <h3>Skills & Focus</h3>
               <div class="skill-list">
                 <span>React Native</span>
+                <span>Expo / EAS</span>
                 <span>HTML/CSS</span>
                 <span>JavaScript</span>
+                <span>TypeScript</span>
+                <span>Firebase</span>
                 <span>UI/UX Design</span>
                 <span>Healthcare IT</span>
                 <span>Creative Direction</span>
                 <span>Game Design</span>
                 <span>Product Strategy</span>
+                <span>AI Integration</span>
               </div>
             </div>
           </div>
@@ -918,18 +752,16 @@
       <section id="resume">
         <h2 class="section-title">Resume</h2>
         <p class="section-subtitle">
-          My background includes healthcare administration, software development studies, product design, and hands-on development work across mobile apps, websites, and creative digital products.
+          My background spans healthcare administration, software development, product design, and hands-on development across four live or in-production mobile apps, websites, and creative digital products — all built independently.
         </p>
-
         <a href="Amanda-Benavidez-Resume.pdf" class="btn btn-primary" download>Download Resume ↓</a>
       </section>
 
       <section class="contact" id="contact">
-        <h2 class="section-title">Let’s Build Something Meaningful</h2>
+        <h2 class="section-title">Let's Build Something Meaningful</h2>
         <p class="section-subtitle">
-          I’m open to opportunities in software development, healthcare technology, UX design, creative tech, and mission-driven digital products.
+          I'm open to opportunities in software development, healthcare technology, UX design, creative tech, and mission-driven digital products.
         </p>
-
         <div class="button-row" style="justify-content:center;">
           <a href="mailto:amandabenavidez05@gmail.com" class="btn btn-primary">Email Me ✉</a>
           <a href="#projects" class="btn btn-secondary">View Projects →</a>
@@ -938,7 +770,7 @@
     </main>
 
     <footer>
-      © 2026 Amanda Benavidez. Built with purpose, creativity, and heart.
+      © 2026 Amanda Benavidez · Aradia Studios. Built with purpose, creativity, and heart.
     </footer>
 
   </div>
