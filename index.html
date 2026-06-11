@@ -358,7 +358,7 @@
       margin-bottom: 38px;
     }
 
-    /* PROJECT GRID — 2×2 */
+    /* PROJECT GRID */
     .project-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -388,10 +388,24 @@
       display: block;
     }
 
-    /* App icon style for Epilune & LumaRise promo images */
-    .project-card img.promo-poster {
-      object-fit: cover;
-      object-position: top center;
+    /* Logo image style for LumaRise & Epilune */
+    .project-card img.project-logo-img {
+      height: 280px;
+      object-fit: contain;
+      object-position: center;
+      padding: 24px;
+    }
+
+    .lumarise-logo-bg {
+      background:
+        radial-gradient(circle at center, rgba(255, 221, 127, 0.18), transparent 42%),
+        linear-gradient(135deg, #080014, #1b0730 48%, #0b0618);
+    }
+
+    .epilune-logo-bg {
+      background:
+        radial-gradient(circle at center, rgba(202, 178, 225, 0.22), transparent 44%),
+        linear-gradient(135deg, #fffaf8, #f7eff7);
     }
 
     .project-content { padding: 26px; }
@@ -404,6 +418,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     .project-content p {
@@ -545,6 +560,43 @@
       .project-grid, .about-wrap { grid-template-columns: 1fr; }
     }
 
+    @media (max-width: 760px) {
+      body { padding: 12px; }
+
+      header {
+        height: auto;
+        min-height: 96px;
+        padding: 24px;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .connect-btn {
+        padding: 12px 18px;
+      }
+
+      .hero {
+        padding: 50px 24px 60px;
+      }
+
+      h1 {
+        font-size: clamp(4rem, 18vw, 6rem);
+        letter-spacing: -2px;
+      }
+
+      .project-card img.project-logo-img {
+        height: 240px;
+        padding: 18px;
+      }
+    }
+
     @media (max-width: 520px) {
       .logo { font-size: 1.25rem; }
       nav { font-size: 0.88rem; }
@@ -647,9 +699,8 @@
           <!-- LumaRise -->
           <article class="project-card">
             <span class="card-accent accent-luma"></span>
-            <div class="card-img-wrap">
-              <img src="LumaRise-promo.png" alt="LumaRise AI manifestation journal app" class="promo-poster"
-                onerror="this.style.background='linear-gradient(135deg,#1e1040,#3b2561)';this.style.display='block';this.style.height='240px';">
+            <div class="card-img-wrap lumarise-logo-bg">
+              <img src="Lumarise-logo.png" alt="LumaRise logo with golden crescent moon and stars" class="project-logo-img">
             </div>
             <div class="project-content">
               <h3>LumaRise <span class="badge badge-soon">Coming to App Store</span></h3>
@@ -669,9 +720,8 @@
           <!-- Epilune -->
           <article class="project-card">
             <span class="card-accent accent-epilune"></span>
-            <div class="card-img-wrap">
-              <img src="Epilune-promo.png" alt="Epilune book journaling app" class="promo-poster"
-                onerror="this.style.background='linear-gradient(135deg,#f3eaf8,#d6c6ec)';this.style.display='block';this.style.height='240px';">
+            <div class="card-img-wrap epilune-logo-bg">
+              <img src="Epilune-logo.png" alt="Epilune logo with open book, crescent moon, and stars" class="project-logo-img">
             </div>
             <div class="project-content">
               <h3>Epilune <span class="badge badge-dev">In Development</span></h3>
