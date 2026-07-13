@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Amanda Walterscheid</title>
+  <meta name="description" content="Projects by Amanda Walterscheid — BitzaHugs, Epilune, LumaRise, Aradia, and MeritVault. Apps, games, and tools built with care." />
+  <meta property="og:title" content="Projects | Amanda Walterscheid" />
+  <meta property="og:description" content="Ideas, code, and creativity — built to make an impact." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%A1%3C/text%3E%3C/svg%3E" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Homemade+Apple&display=swap" rel="stylesheet">
 
@@ -11,12 +15,12 @@
     :root {
       --cream: #f7f2ea;
       --cream-soft: #fffaf3;
-      --navy: #0f1724;
-      --navy-2: #151f2d;
-      --blush: #e8ad97;
-      --blush-light: #ffd9c7;
+      --navy: #111722;
+      --navy-2: #1c2430;
+      --blush: #d8a38f;
+      --blush-light: #f1d2c4;
       --text: #1d2230;
-      --muted: #68707f;
+      --muted: #6c6f78;
       --white: #ffffff;
       --shadow: 0 24px 80px rgba(15, 23, 36, 0.18);
       --radius: 30px;
@@ -39,9 +43,10 @@
       overflow-x: hidden;
     }
 
-    a {
+    a, button {
       color: inherit;
       text-decoration: none;
+      font: inherit;
     }
 
     img {
@@ -53,7 +58,7 @@
 
     .top-area {
       background:
-        radial-gradient(circle at 70% 20%, rgba(232, 173, 151, 0.16), transparent 26%),
+        radial-gradient(circle at 70% 20%, rgba(216, 163, 143, 0.16), transparent 26%),
         radial-gradient(circle at 50% 35%, rgba(255,255,255,0.08), transparent 38%),
         linear-gradient(180deg, #101a27 0%, #0d1520 100%);
       color: white;
@@ -81,7 +86,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
-      z-index: 5;
+      z-index: 40;
     }
 
     .logo {
@@ -131,6 +136,12 @@
       border-radius: 999px;
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
     .connect-btn {
       background: var(--blush-light);
       color: var(--navy);
@@ -139,6 +150,67 @@
       font-weight: 800;
       font-size: 0.9rem;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    /* MOBILE NAV TOGGLE */
+
+    .nav-toggle {
+      display: none;
+      width: 32px;
+      height: 22px;
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 45;
+      padding: 0;
+    }
+
+    .nav-toggle span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: 0.25s ease;
+    }
+
+    .nav-toggle span:nth-child(1) { top: 0; }
+    .nav-toggle span:nth-child(2) { top: 10px; }
+    .nav-toggle span:nth-child(3) { top: 20px; }
+
+    .nav-toggle.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      transform: translateY(-100%);
+      transition: transform 0.35s ease;
+      z-index: 42;
+    }
+
+    .mobile-nav.open {
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      color: white;
+    }
+
+    .mobile-nav .connect-btn {
+      background: var(--blush);
     }
 
     /* HERO */
@@ -230,18 +302,9 @@
       top: 132px;
       width: 150px;
       height: 150px;
-      background-image: radial-gradient(rgba(232, 173, 151, 0.24) 2px, transparent 2px);
+      background-image: radial-gradient(rgba(216, 163, 143, 0.24) 2px, transparent 2px);
       background-size: 18px 18px;
       opacity: 0.8;
-    }
-
-    .profile-photo {
-      position: relative;
-      z-index: 3;
-      height: 430px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 26px 40px rgba(0,0,0,0.28));
     }
 
     .sparkles {
@@ -312,6 +375,7 @@
       padding: 13px 28px;
       font-weight: 700;
       font-size: 0.88rem;
+      cursor: pointer;
     }
 
     .filter-pill.active {
@@ -342,6 +406,12 @@
       box-shadow: 0 22px 60px rgba(15, 23, 36, 0.2);
       transition: 0.25s ease;
       isolation: isolate;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-card.is-hidden {
+      display: none;
     }
 
     .project-card:hover {
@@ -353,21 +423,18 @@
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.22), transparent 32%),
-        linear-gradient(180deg, rgba(15,23,36,0.08), rgba(15,23,36,0.85));
-      z-index: -1;
+      background: inherit;
+      filter: blur(0);
+      z-index: -2;
     }
 
     .project-card::after {
       content: "";
       position: absolute;
-      right: -55px;
-      bottom: -65px;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.18), transparent 32%),
+        linear-gradient(180deg, rgba(15,23,36,0.25), rgba(15,23,36,0.88));
       z-index: -1;
     }
 
@@ -409,6 +476,11 @@
       opacity: 0.95;
     }
 
+    .project-content {
+      position: relative;
+      z-index: 2;
+    }
+
     .project-content h2 {
       font-family: "Cormorant Garamond", serif;
       font-size: 3.2rem;
@@ -422,7 +494,20 @@
       line-height: 1.7;
       font-size: 0.98rem;
       max-width: 370px;
-      margin-bottom: 28px;
+      margin-bottom: 12px;
+    }
+
+    .project-more {
+      display: none;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      font-size: 0.98rem;
+      max-width: 370px;
+      margin-bottom: 16px;
+    }
+
+    .project-card.expanded .project-more {
+      display: block;
     }
 
     .tech-row {
@@ -452,51 +537,45 @@
       font-size: 0.95rem;
       border-bottom: 1px solid rgba(255,255,255,0.6);
       padding-bottom: 5px;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      cursor: pointer;
     }
 
     .bitzahugs {
-      background:
-        linear-gradient(135deg, rgba(84, 64, 119, 0.92), rgba(167, 139, 205, 0.76)),
-        url("https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1000&q=80");
-      background-size: cover;
-      background-position: center;
+      background-image:
+        linear-gradient(135deg, rgba(84, 64, 119, 0.72), rgba(167, 139, 205, 0.5)),
+        url("Bitzahugs-website.png");
     }
 
     .aradia {
-      background:
-        linear-gradient(135deg, rgba(22, 20, 35, 0.95), rgba(88, 51, 116, 0.82)),
-        url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1000&q=80");
-      background-size: cover;
-      background-position: center;
+      background-image:
+        linear-gradient(135deg, rgba(22, 20, 35, 0.72), rgba(88, 51, 116, 0.55)),
+        url("Aradia-game.png");
     }
 
     .lumarise {
-      background:
-        linear-gradient(135deg, rgba(176, 103, 62, 0.92), rgba(241, 173, 116, 0.8)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80");
-      background-size: cover;
-      background-position: center;
+      background-image:
+        linear-gradient(135deg, rgba(176, 103, 62, 0.7), rgba(241, 173, 116, 0.5)),
+        url("Lumarise-poster.png");
     }
 
     .epilune {
       grid-column: span 1;
-      background:
-        linear-gradient(135deg, rgba(45, 39, 34, 0.94), rgba(116, 97, 80, 0.78)),
-        url("https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1000&q=80");
-      background-size: cover;
-      background-position: center;
+      background-image:
+        linear-gradient(135deg, rgba(45, 39, 34, 0.72), rgba(116, 97, 80, 0.5)),
+        url("Epilune-poster.png");
     }
 
     .meritvault {
       grid-column: span 2;
-      background:
-        linear-gradient(135deg, rgba(14, 36, 70, 0.96), rgba(64, 137, 183, 0.8)),
-        url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=80");
-      background-size: cover;
-      background-position: center;
+      background-image: linear-gradient(135deg, rgba(14, 36, 70, 0.96), rgba(64, 137, 183, 0.8));
     }
 
-    .meritvault .project-content {
+    .meritvault .project-content,
+    .meritvault .project-more {
       max-width: 430px;
     }
 
@@ -554,7 +633,7 @@
       margin: 56px 0 50px;
       border-radius: 34px;
       background:
-        radial-gradient(circle at 15% 50%, rgba(232,173,151,0.42), transparent 22%),
+        radial-gradient(circle at 15% 50%, rgba(216,163,143,0.42), transparent 22%),
         linear-gradient(135deg, #ffe8dd, #fff5ec);
       min-height: 170px;
       padding: 34px 42px;
@@ -732,10 +811,6 @@
         height: 390px;
       }
 
-      .profile-photo {
-        height: 385px;
-      }
-
       .project-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -769,6 +844,10 @@
         display: none;
       }
 
+      .nav-toggle {
+        display: block;
+      }
+
       .connect-btn {
         padding: 12px 18px;
         font-size: 0.78rem;
@@ -795,10 +874,6 @@
       .photo-circle {
         width: 320px;
         height: 320px;
-      }
-
-      .profile-photo {
-        height: 330px;
       }
 
       .container {
@@ -868,7 +943,7 @@
     <header>
       <a href="index.html" class="logo">Amanda</a>
 
-      <nav>
+      <nav id="site-nav">
         <a href="index.html#about">About</a>
         <a href="projects.html" class="active">Projects</a>
         <a href="index.html#skills">Skills</a>
@@ -876,15 +951,29 @@
         <a href="index.html#contact">Contact</a>
       </nav>
 
-      <a href="index.html#contact" class="connect-btn">Let’s Connect →</a>
+      <div class="header-actions">
+        <a href="index.html#contact" class="connect-btn">Let's Connect →</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html#about">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="connect-btn">Let's Connect →</a>
+    </nav>
 
     <section class="projects-hero">
       <div class="hero-copy">
         <h1>My Projects <span class="heart">♡</span></h1>
         <p class="hero-subtitle">Ideas, code, and creativity — built to make an impact.</p>
         <p class="hero-description">
-          Here are some of the projects I’m working on or proud to have built.
+          Here are some of the projects I'm working on or proud to have built.
           Each one represents a challenge, a lesson, and a purpose.
         </p>
         <div class="scribble"></div>
@@ -894,7 +983,6 @@
         <div class="photo-circle"></div>
         <span class="sparkles">✦</span>
         <span class="sparkles small">✧</span>
-      
       </div>
 
       <p class="hero-note">More coming soon!</p>
@@ -903,17 +991,17 @@
 
   <main>
     <div class="container">
-      <div class="filter-row">
-        <a href="#" class="filter-pill active">All Projects</a>
-        <a href="#" class="filter-pill">Apps</a>
-        <a href="#" class="filter-pill">Web</a>
-        <a href="#" class="filter-pill">Games</a>
-        <a href="#" class="filter-pill">Tools</a>
-        <a href="#" class="filter-pill">Concepts</a>
+      <div class="filter-row" id="filterRow">
+        <button class="filter-pill active" data-filter="all">All Projects</button>
+        <button class="filter-pill" data-filter="apps">Apps</button>
+        <button class="filter-pill" data-filter="web">Web</button>
+        <button class="filter-pill" data-filter="games">Games</button>
+        <button class="filter-pill" data-filter="tools">Tools</button>
+        <button class="filter-pill" data-filter="concepts">Concepts</button>
       </div>
 
-      <section class="project-grid" aria-label="Amanda's projects">
-        <article class="project-card bitzahugs">
+      <section class="project-grid" aria-label="Amanda's projects" id="projectGrid">
+        <article class="project-card bitzahugs" id="bitzahugs" data-category="apps">
           <div class="project-top">
             <span class="tag">Caregiver Support App</span>
             <span class="status">Live</span>
@@ -926,6 +1014,10 @@
               A gentle support app for caregivers of autistic and sensory-needs children.
               Tools for routines, transitions, hard moments, and daily care.
             </p>
+            <p class="project-more">
+              Built with a focus on calm, low-stimulation UI — includes visual routines,
+              a "hard moment" toolkit, and shared logging so caregiving teams stay in sync.
+            </p>
 
             <div class="tech-row">
               <span class="tech">F</span>
@@ -933,11 +1025,11 @@
               <span class="tech">AI</span>
             </div>
 
-            <a href="#" class="project-link">View Project →</a>
+            <button class="project-link" data-toggle="bitzahugs">View Project →</button>
           </div>
         </article>
 
-        <article class="project-card aradia">
+        <article class="project-card aradia" id="aradia" data-category="games">
           <div class="project-top">
             <span class="tag">Interactive Game</span>
             <span class="status">In Progress</span>
@@ -950,6 +1042,10 @@
               A magical, story-driven game concept built around atmosphere,
               exploration, mystery, and meaningful player choices.
             </p>
+            <p class="project-more">
+              Being built in Unity with C# — focused on branching dialogue,
+              atmospheric world design, and player choices that shape the story.
+            </p>
 
             <div class="tech-row">
               <span class="tech">U</span>
@@ -957,11 +1053,11 @@
               <span class="tech">3D</span>
             </div>
 
-            <a href="#" class="project-link">View Project →</a>
+            <button class="project-link" data-toggle="aradia">View Project →</button>
           </div>
         </article>
 
-        <article class="project-card lumarise">
+        <article class="project-card lumarise" id="lumarise" data-category="apps web">
           <div class="project-top">
             <span class="tag">Wellness App</span>
             <span class="status">In Progress</span>
@@ -974,6 +1070,10 @@
               An AI manifestation and affirmation journal to help users set intentions,
               reflect on goals, and build a positive mindset practice.
             </p>
+            <p class="project-more">
+              Built with React and Firebase — daily prompts, mood check-ins, and
+              an AI-assisted journal that reflects language back to the user.
+            </p>
 
             <div class="tech-row">
               <span class="tech">R</span>
@@ -981,11 +1081,11 @@
               <span class="tech">✦</span>
             </div>
 
-            <a href="#" class="project-link">View Project →</a>
+            <button class="project-link" data-toggle="lumarise">View Project →</button>
           </div>
         </article>
 
-        <article class="project-card epilune">
+        <article class="project-card epilune" id="epilune" data-category="apps web">
           <div class="project-top">
             <span class="tag">Book Reflection App</span>
             <span class="status">In Progress</span>
@@ -998,6 +1098,10 @@
               A modern book reflection app for saving private thoughts, quotes,
               reading seasons, and feelings that stay with you after a book.
             </p>
+            <p class="project-more">
+              React front end with a Firebase backend — organizes reading by season,
+              lets you tag quotes and moods, and keeps a private reflection log per book.
+            </p>
 
             <div class="tech-row">
               <span class="tech">R</span>
@@ -1005,11 +1109,11 @@
               <span class="tech">~</span>
             </div>
 
-            <a href="#" class="project-link">View Project →</a>
+            <button class="project-link" data-toggle="epilune">View Project →</button>
           </div>
         </article>
 
-        <article class="project-card meritvault">
+        <article class="project-card meritvault" id="meritvault" data-category="tools concepts">
           <div class="project-top">
             <span class="tag">Student Success Tool</span>
             <span class="status">Concept</span>
@@ -1022,6 +1126,10 @@
               A scholarship and achievement tracker for students to organize deadlines,
               accomplishments, applications, and future opportunities in one place.
             </p>
+            <p class="project-more">
+              Concept built around a Node.js backend — deadline reminders, an
+              achievements archive, and a dashboard view of open applications.
+            </p>
 
             <div class="tech-row">
               <span class="tech">N</span>
@@ -1029,7 +1137,7 @@
               <span class="tech">DB</span>
             </div>
 
-            <a href="#" class="project-link">View Project →</a>
+            <button class="project-link" data-toggle="meritvault">View Project →</button>
           </div>
 
           <div class="dashboard-preview" aria-hidden="true">
@@ -1055,11 +1163,11 @@
         <div class="cta-icon">✉</div>
 
         <div>
-          <p class="cta-script">Let’s build something amazing! ♡</p>
+          <p class="cta-script">Let's build something amazing! ♡</p>
           <h2>Have a project in mind?</h2>
           <p>
-            I’m always open to new opportunities and meaningful ideas.
-            Let’s create something thoughtful together.
+            I'm always open to new opportunities and meaningful ideas.
+            Let's create something thoughtful together.
           </p>
         </div>
 
@@ -1078,11 +1186,57 @@
       <p class="footer-copy">© 2026 Amanda Benavidez. All rights reserved.</p>
 
       <div class="socials">
-        <a href="#" aria-label="GitHub">GitHub</a>
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://github.com/Amaben0506" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+        <a href="https://www.linkedin.com/in/amandanbenavidez/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
         <a href="mailto:amandabenavidez05@gmail.com" aria-label="Email">Email</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      navToggle.classList.toggle('active', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Filter pills
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.project-card');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const filter = pill.dataset.filter;
+
+        cards.forEach(card => {
+          const cats = (card.dataset.category || '').split(' ');
+          const show = filter === 'all' || cats.includes(filter);
+          card.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
+
+    // View Project / Show Less toggles
+    document.querySelectorAll('[data-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = document.getElementById(btn.dataset.toggle);
+        const expanded = card.classList.toggle('expanded');
+        btn.textContent = expanded ? 'Show Less ←' : 'View Project →';
+      });
+    });
+  </script>
 </body>
 </html>
